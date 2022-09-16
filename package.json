@@ -1,0 +1,19 @@
+{
+    "name": "glitch-discord-bot",
+    "version": "3.0",
+    "description": "伊吹さんと製作中のDiscord Botです。",
+    "main": "main.js",
+    "dependencies": {
+      "discord.js": "^14.3.0",
+      "dotenv": "^16.0.1",
+      "qs": "^6.11.0"
+    },
+    "engines": {
+      "node": "16.x"
+    },
+    "scripts": {
+      "start": "node main.js",
+      "test": "node test.js"
+    }
+  }
+  

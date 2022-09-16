@@ -1,0 +1,260 @@
+{
+    "prefix": "a!",
+    "playing": "日本を勉強",
+    "channel_log": "1011829509974143036",
+    "texts": [
+        [
+            "このbotは現在も開発と機能追加が続いています。",
+            "もし問題点や修正点があれば、bot管理人の**あんこかずなみ36#5008**や、",
+            "開発中心の**伊吹ch#7776**にDM等でご相談ください。"
+        ],
+        [
+            "そのようなコマンドは確認できませんでした。",
+            "/helpを使用することで、コマンドの詳細を確認できます。",
+            "botに質問がある場合も、helpにて確認ができます"
+        ],
+        [
+            "にてエラーを確認しました。",
+            "修正が必要です。"
+        ]
+    ],
+    "data": [
+        {
+            "command": "okinawa",
+            "name": "沖縄",
+            "explanation": "県庁所在地那覇市"
+        },
+        {
+            "command": "kagoshima",
+            "name": "鹿児島",
+            "explanation": "県庁所在地鹿児島市"
+        },
+        {
+            "command": "miyazaki",
+            "name": "宮崎",
+            "explanation": "県庁所在地宮崎市"
+        },
+        {
+            "command": "ooita",
+            "name": "大分",
+            "explanation": "県庁所在地大分市"
+        },
+        {
+            "command": "kumamoto",
+            "name": "熊本",
+            "explanation": "県庁所在地熊本市"
+        },
+        {
+            "command": "nagasaki",
+            "name": "長崎",
+            "explanation": "県庁所在地長崎市"
+        },
+        {
+            "command": "saga",
+            "name": "佐賀",
+            "explanation": "県庁所在地佐賀市"
+        },
+        {
+            "command": "fukuoka",
+            "name": "福岡",
+            "explanation": "★<@957470352575979580> の出身地\n県庁所在地福岡市"
+        },
+        {
+            "command": "yamaguchi",
+            "name": "山口",
+            "explanation": "★関門海峡があります\n県庁所在地山口市"
+        },
+        {
+            "command": "hiroshima",
+            "name": "広島",
+            "explanation": "★<@957470352575979580> のふるさと\n県庁所在地広島市"
+        },
+        {
+            "command": "okayama",
+            "name": "岡山",
+            "explanation": "★もも太郎ですね\n県庁所在地岡山市"
+        },
+        {
+            "command": "shimane",
+            "name": "島根",
+            "explanation": "★人口すくない(worst2)\n県庁所在地松江市"
+        },
+        {
+            "command": "tottori",
+            "name": "鳥取",
+            "explanation": "★鳥取砂丘があります\n県庁所在地鳥取市"
+        },
+        {
+            "command": "kouchi",
+            "memo": "高知市",
+            "name": "高知",
+            "explanation": "★柚子が有名です\n県庁所在地高知市"
+        },
+        {
+            "command": "ehime",
+            "memo": "松山市",
+            "name": "愛媛",
+            "explanation": "★みかん2位かな\n県庁所在地松山市"
+        },
+        {
+            "command": "kagawa",
+            "name": "香川",
+            "explanation": "★讃岐うどんがおいしすぎ\n県庁所在地高松市"
+        },
+        {
+            "command": "tokushima",
+            "name": "徳島",
+            "explanation": "★阿波踊りが有名です\n県庁所在地徳島市"
+        },
+        {
+            "command": "wakayama",
+            "name": "和歌山",
+            "explanation": "★みかんが有名です\n県庁所在地和歌山市"
+        },
+        {
+            "command": "nara",
+            "name": "奈良",
+            "explanation": ""
+        },
+        {
+            "command": "hyougo",
+            "name": "兵庫",
+            "explanation": "★東大寺が有名です\n県庁所在地神戸市"
+        },
+        {
+            "command": "oosaka",
+            "name": "大阪",
+            "explanation": "★たこ焼きが有名です\n県庁所在地大阪府"
+        },
+        {
+            "command": "kyoto",
+            "name": "京都",
+            "explanation": "★古い街並みといえば京都\n県庁所在地京都府"
+        },
+        {
+            "command": "shiga",
+            "name": "滋賀",
+            "explanation": "★琵琶湖があるのは滋賀\n県庁所在地大津市"
+        },
+        {
+            "command": "mie",
+            "name": "三重",
+            "explanation": "★伊勢神宮が有名\n県庁所在地津市"
+        },
+        {
+            "command": "aichi",
+            "name": "愛知",
+            "explanation": "★愛知といえばトヨタ\n県庁所在地名古屋市"
+        },
+        {
+            "command": "shizuoka",
+            "name": "静岡",
+            "explanation": "★お茶が有名\n県庁所在地静岡市"
+        },
+        {
+            "command": "gifu",
+            "name": "岐阜",
+            "explanation": "★合掌造りが有名\n県庁所在地岐阜市"
+        },
+        {
+            "command": "nagano",
+            "name": "長野",
+            "explanation": "★リンゴが有名\n県庁所在地岐阜市\n高原は夏でも涼しい"
+        },
+        {
+            "command": "yamanashi",
+            "name": "山梨",
+            "explanation": "★ブドウが有名\n県庁所在地甲府市"
+        },
+        {
+            "command": "fukui",
+            "name": "福井",
+            "explanation": "★メガネフレームが有名\n県庁所在地福井市"
+        },
+        {
+            "command": "ishikawa",
+            "name": "石川",
+            "explanation": "★兼六園が有名\n県庁所在地金沢市"
+        },
+        {
+            "command": "toyama",
+            "name": "富山",
+            "explanation": "★ぶりが有名\n県庁所在地富山市"
+        },
+        {
+            "command": "niigata",
+            "name": "新潟",
+            "explanation": "★お米の名産品\n県庁所在地新潟市"
+        },
+        {
+            "command": "kanagawa",
+            "name": "神奈川",
+            "explanation": "★横浜中華街が有名\n県庁所在地横浜市"
+        },
+        {
+            "command": "tokyo",
+            "name": "東京",
+            "explanation": "★日本の首都\n都庁所在地新宿区"
+        },
+        {
+            "command": "chiba",
+            "name": "千葉",
+            "explanation": "★ディズニーランドがあります\n県庁所在地千葉市"
+        },
+        {
+            "command": "saitama",
+            "name": "埼玉",
+            "explanation": "★実はうどんの消費量\n県庁所在地さいたま市"
+        },
+        {
+            "command": "gunma",
+            "name": "群馬",
+            "explanation": "★草津温泉があります\n県庁所在地前橋市"
+        },
+        {
+            "command": "tochigi",
+            "name": "栃木",
+            "explanation": "★苺が有名\n県庁所在地宇都宮市"
+        },
+        {
+            "command": "ibaraki",
+            "name": "茨城",
+            "explanation": "★納豆が有名\n県庁所在地水戸市"
+        },
+        {
+            "command": "fukushima",
+            "name": "福島",
+            "explanation": "★喜多方ラーメンが有名\n県庁所在地福島市"
+        },
+        {
+            "command": "yamagata",
+            "name": "山形",
+            "explanation": "★佐藤錦(さくらんぼ)が有名\n県庁所在地山形市"
+        },
+        {
+            "command": "akita",
+            "name": "秋田",
+            "explanation": "★なまはげが有名\n県庁所在地秋田市"
+        },
+        {
+            "command": "miyagi",
+            "name": "宮城",
+            "explanation": "★ずんだが有名\n県庁所在地仙台市"
+        },
+        {
+            "command": "iwate",
+            "name": "岩手",
+            "explanation": "★わんこそばが有名\n県庁所在地盛岡市"
+        },
+        {
+            "command": "aomori",
+            "name": "青森",
+            "explanation": "★津軽りんごが有名\n県庁所在地青森市"
+        },
+        {
+            "command": "hokkaido",
+            "name": "北海道",
+            "explanation": "★雪まつりが有名\n県庁所在地札幌市"
+        }
+    ]
+}
