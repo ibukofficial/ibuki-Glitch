@@ -1,43 +1,31 @@
-require("./in.js");
-const { Client, GatewayIntentBits, Partials, EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js'), //これ使って一部の機能が使える。
+require('dotenv').config();
+const { Client, GatewayIntentBits, Partials, SlashCommandBuilder, EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, SnowflakeUtil } = require('discord.js'), //これ使って一部の機能が使える。
 	client = new Client({
 		partials: [Partials.Channel],
-		intents: [GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildVoiceStates,
-		GatewayIntentBits.GuildMessages,
-		GatewayIntentBits.GuildMessageReactions,
-		GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent]
-	}), //インテントとは、メッセージにが送信されたことを取得したり、最近だとメッセージ内容を取得するかどうがを決める
-	data = require("./data.json"); //json取り込み
-var args, cmdname, channellog,
+		intents: [
+			GatewayIntentBits.Guilds,
+			GatewayIntentBits.GuildVoiceStates,
+			GatewayIntentBits.GuildMessages,
+			GatewayIntentBits.GuildMessageReactions,
+			GatewayIntentBits.DirectMessages,
+			GatewayIntentBits.MessageContent
+		]
+	}),
+	data = require("./data.json");
+let channellog,
 	br = "\n",
 	bro = "```",
 	scommand = [
-		{
-			name: "help",
-			description: "ヘルプを表示します。"
-		},
-		{
-			type: ApplicationCommandOptionType.SubcommandGroup,
-			name: "psb",
-			description: "各地の情報を表示します。",
-			options: []
-		}
+		new SlashCommandBuilder()
+			.setName("help")
+			.setDescription("ヘルプを表示します。")
 	],
-	helpdata = "```",
 	texts = data.texts;
-for (var i = 0; i != data.data.length; i++) {
-	scommand[1].options.push({
-		type: ApplicationCommandOptionType.Subcommand,
-		name: data.data[i].command,
-		description: data.data[i].name,
-	});
+for (let i = 0; i != data.data.length; i++) {
+	scommand.push(new SlashCommandBuilder()
+		.setName(data.data[i].command)
+		.setDescription(data.data[i].name));
 };
-console.log(scommand[1]);
-for (var ig = 0; ig != data.data.length; ig++) {
-	if (helpdata != bro) { helpdata = helpdata + br; };
-	helpdata = helpdata + data.data[ig].name + ":" + data.data[ig].command; //ヘルプを１列追加
-}; helpdata = helpdata + bro;
 client.on('ready', () => {
 	try {
 		channellog = client.channels.cache.get(data.channel_log);
@@ -56,41 +44,39 @@ client.on('interactionCreate', interaction => {
 		if (cmdname == "help") {
 			let helpnotes = autobr(texts[0]);
 			interaction.reply({
-				embeds: [{
-					title: "ヘルプ",
-					description: "今調べられる都道府県の数は、`" + data.data.length + "`個調べられます",
-					color: 0x7289da,
-					fields: [
-						{ name: "一覧", value: helpdata },
-						{ name: "botについて", value: helpnotes }
-					]
-				}]
+				embeds: [
+					new EmbedBuilder()
+						.setTitle("ヘルプ")
+						.setDescription("今調べられる都道府県の数は、`" + data.data.length + "`個調べられます")
+						.setColor(0x7289da)
+						.addFields({ name: "botについて", value: helpnotes })
+				]
 			}); //送信
 		} else if (cmdname == "psb") {
-			var cmdsubname = interaction.options.getString("select")
+			var cmdsubname = interaction.options.getString("select");
 			console.log(cmdsubname); //出力
 			var set = false; //これコマンドがjsonの中から当たらなかったかどうか判断するために使う
 			for (let i = 0; i != data.data.length; i++) { //dataの数だけ
 				if (cmdsubname == data.data[i].command) { //コマンドがあってるか繰り返す(ループして一つ一つ当たるかifで判断)
 					interaction.reply({ //当たったら返信する
-						embeds: [{
-							title: data.data[i].name, //当たった時の番号でjson指定
-							description: data.data[i].explanation,
-							color: 0x7289da //色ぬり
-						}]
+						embeds: [
+							new EmbedBuilder()
+								.setTitle(data.data[i].name)
+								.setDescription(data.data[i].explanation)
+								.setColor(0x7289da)
+								.addFields({ name: "botについて", value: helpnotes })
+						]
 					});
 					set = true; //当たったことにする
-				};;
+				};
 			};
 			if (set != true) { //当たらなかったらif実行。でも他のコマンドはないから、下の文字列を返す
-				let errornotes = autobr(texts[1]);
-				interaction.reply({ content: errornotes, ephemeral: true });
+				interaction.reply({ content: autobr(texts[1]), ephemeral: true });
 			};
 		} else {
 			var set = false; //これコマンドがjsonの中から当たらなかったかどうか判断するために使う
 			if (set != true) { //当たらなかったらif実行。でも他のコマンドはないから、下の文字列を返す
-				let errornotes = autobr(texts[1]);
-				interaction.reply({ content: errornotes, ephemeral: true });
+				interaction.reply({ content: autobr(texts[1]), ephemeral: true });
 			};
 		};
 	} catch (e) {
