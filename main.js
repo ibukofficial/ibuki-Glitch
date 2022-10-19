@@ -39,45 +39,41 @@ client.on('ready', () => {
 client.on('interactionCreate', interaction => {
 	try {
 		if (!interaction.isCommand()) return; //これちょっとわからない
-		var cmdname = interaction.commandName; //入力されたコマンド
-		console.log(cmdname); //出力
-		if (cmdname == "help") {
-			let helpnotes = autobr(texts[0]);
-			interaction.reply({
-				embeds: [
-					new EmbedBuilder()
-						.setTitle("ヘルプ")
-						.setDescription("今調べられる都道府県の数は、`" + data.data.length + "`個調べられます")
-						.setColor(0x7289da)
-						.addFields({ name: "botについて", value: helpnotes })
-				]
-			}); //送信
-		} else if (cmdname == "psb") {
-			var cmdsubname = interaction.options.getString("select");
-			console.log(cmdsubname); //出力
-			var set = false; //これコマンドがjsonの中から当たらなかったかどうか判断するために使う
-			for (let i = 0; i != data.data.length; i++) { //dataの数だけ
-				if (cmdsubname == data.data[i].command) { //コマンドがあってるか繰り返す(ループして一つ一つ当たるかifで判断)
-					interaction.reply({ //当たったら返信する
-						embeds: [
-							new EmbedBuilder()
-								.setTitle(data.data[i].name)
-								.setDescription(data.data[i].explanation)
-								.setColor(0x7289da)
-								.addFields({ name: "botについて", value: helpnotes })
-						]
-					});
-					set = true; //当たったことにする
+		console.log(interaction.commandName); //出力
+		switch (interaction.commandName) {
+			case "help": {
+				interaction.reply({
+					embeds: [
+						new EmbedBuilder()
+							.setTitle("ヘルプ")
+							.setDescription("今調べられる都道府県の数は、`" + data.data.length + "`個調べられます")
+							.setColor(0x7289da)
+							.addFields({ name: "botについて", value: autobr(texts[0]) })
+					]
+				}); //送信
+				break;
+			}
+			default: {
+				var set = false; //これコマンドがjsonの中から当たらなかったかどうか判断するために使う
+				for (let i = 0; i != data.data.length; i++) { //dataの数だけ
+					if (interaction.commandName == data.data[i].command) { //コマンドがあってるか繰り返す(ループして一つ一つ当たるかifで判断)
+						interaction.reply({ //当たったら返信する
+							embeds: [
+								new EmbedBuilder()
+									.setTitle(data.data[i].name)
+									.setDescription(data.data[i].explanation)
+									.setColor(0x7289da)
+									.addFields({ name: "botについて", value: helpnotes })
+							]
+						});
+						set = true; //当たったことにする
+					};
 				};
-			};
-			if (set != true) { //当たらなかったらif実行。でも他のコマンドはないから、下の文字列を返す
-				interaction.reply({ content: autobr(texts[1]), ephemeral: true });
-			};
-		} else {
-			var set = false; //これコマンドがjsonの中から当たらなかったかどうか判断するために使う
-			if (set != true) { //当たらなかったらif実行。でも他のコマンドはないから、下の文字列を返す
-				interaction.reply({ content: autobr(texts[1]), ephemeral: true });
-			};
+				if (set != true) { //当たらなかったらif実行。でも他のコマンドはないから、下の文字列を返す
+					interaction.reply({ content: autobr(texts[1]), ephemeral: true });
+				};
+				break;
+			}
 		};
 	} catch (e) {
 		errorsend("interactionCreate", e);
@@ -104,11 +100,11 @@ function autobr(textdata) {
 	return outdata;
 };
 function errorsend(set, e) {
-	console.log(e); console.log(set); let errornotes = autobr(texts[2]);
+	console.log(e); console.log(set);
 	channellog.send({
 		embeds: [{
 			title: "エラー検知",
-			description: set + errornotes,
+			description: set + autobr(texts[2]),
 			fields: [{
 				name: "内容",
 				value: bro + e + bro
