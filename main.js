@@ -63,7 +63,6 @@ client.on('interactionCreate', interaction => {
 									.setTitle(data.data[i].name)
 									.setDescription(data.data[i].explanation)
 									.setColor(0x7289da)
-									.addFields({ name: "botについて", value: helpnotes })
 							]
 						});
 						set = true; //当たったことにする
@@ -101,7 +100,7 @@ function autobr(textdata) {
 };
 function errorsend(set, e) {
 	console.log(e); console.log(set);
-	channellog.send({
+	if (0 == 1) channellog.send({
 		embeds: [{
 			title: "エラー検知",
 			description: set + autobr(texts[2]),
