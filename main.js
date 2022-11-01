@@ -11,6 +11,14 @@ let scommand = [
 	new SlashCommandBuilder()
 		.setName("help")
 		.setDescription("ヘルプを表示します。")
+	,
+	new SlashCommandBuilder()
+		.setName("welcomelocation")
+		.setDescription("ようこそメッセージの場所を設定・変更出来ます。")
+		.addStringOption(option => option
+			.setName("chname")
+			.setDescription("チャンネル名を決定してください。")
+		)
 ];
 
 for (let i = 0; i != data.data.length; i++) { scommand.push(new SlashCommandBuilder().setName(data.data[i].command).setDescription(data.data[i].name)); };
@@ -79,6 +87,15 @@ client.on('messageCreate', message => {
 					message.channel.send(data.reply[i].reply[Math.floor(Math.random() * data.reply[i].reply.length)]);
 				};
 			};
+		};
+		switch (message.content) {
+			case "createch": {
+				let split = message.content.split(" ");
+				message.guild.channels.create(split[1] || "new Channel")
+					.then((channel) => {
+						message.channel.send("<#" + channel.id + "> チャンネルの作成をしました。");
+					});
+			}
 		};
 	} catch (e) {
 		console.log(e);
